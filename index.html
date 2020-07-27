@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Mapa PDI</title>
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div ng-app="mapaPDI" ng-controller="HomeController as ctrl" id="container-pagina">
+      <span id="titulo">Mapa PDI</span>
+      <span id="descricao">Mapa com cadastro de pontos de interesse utilizando Leaflet.</span>
+
+      <div style="padding-top:20px; padding-bottom:20px">
+        <div id="mapa"></div>
+      </div>
+
+      <table class="center">
+        <thead>
+          <tr>
+            <th style="width:10%"><div>Nome</div></th>
+            <th style="width:20%; padding-left:2%"><div>Remover</div></th>
+          </tr>
+        </thead>
+        <tbody class="lista-marcadores">
+          <tr ng-repeat="marcador in ctrl.marcadoresAdicionados track by $index" class="linha-marcador">
+            <td style="width:10%"><div ng-click="ctrl.focar(marcador)">marcador</div></td>
+            <td style="width:20%; padding-left:2%"><i class="glyphicon glyphicon-remove-circle" ng-click="ctrl.removerMarcador(marcador)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="app.js"></script>
+  </body>
+</html>
